@@ -27,7 +27,7 @@ export default function Home() { // Social media & discounts, uberEats
             </section>
              
             <div className="col-12 mt-5 d-flex align-items-center flex-column">
-                <h5>Follow us on our social media!</h5>
+                <h5>Follow us on social media!</h5>
                 <SocialMediaButtons />
             </div>
         </main>
