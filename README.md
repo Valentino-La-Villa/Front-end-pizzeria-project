@@ -8,6 +8,7 @@ Features:
 * Responsive UI supporting down to 360p resolutions
 * Dynamic and easy to edit implementation of discount managing within products, automated to show discounted options on the home page slideshow
 * Burger menu feature for lower resolution devices
+* Orders and Contact form submissions are posted to a placeholder API
 
 Technologies used:
 
