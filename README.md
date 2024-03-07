@@ -14,3 +14,5 @@ Technologies used:
 * React.js
 * Bootstrap
 * SweetAlert2
+* Axios.js
+* SCSS

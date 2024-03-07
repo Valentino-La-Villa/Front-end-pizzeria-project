@@ -2,7 +2,8 @@ import { useBranchContext, useShoppingCartContext } from "./ContextProvider"
 import React from "react"
 import Swal from "sweetalert2"
 import { nanoid } from "nanoid"
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Axios from "axios"
 
 export default function CartPaymentInfo({totalPrice}) {
 
@@ -23,8 +24,8 @@ export default function CartPaymentInfo({totalPrice}) {
     
     const handleFormSubmit =(event)=>{                              // In a full project this information would go straight to back-end to be processed and directed to the restaurant
         event.preventDefault()
-        const location = branches.find(branch => branch.id == formData.deliveryBranch)
-        const locationDisplay = `${location.city}, ${location.state_twoLetterFormat}`
+        const location = branches.find(branch => branch.id == formData.deliveryBranch) //
+        const locationDisplay = `${location.city}, ${location.state_twoLetterFormat}`  //
         const orderID = nanoid()
 
         console.log(`Processed incoming order with the following details:
@@ -33,6 +34,15 @@ export default function CartPaymentInfo({totalPrice}) {
         Total price: $${totalPrice}
         Order:`, shoppingList, ` 
         Order ID: ${orderID}`)
+
+        Axios.post('https://jsonplaceholder.typicode.com/posts', 
+        {
+            address: formData.deliveryAddress,
+            location,
+            price: totalPrice,
+            order: shoppingList,
+            orderID
+        }) // Using a placeholder api for this project, but this would go to a custom database, or straight to the restaurant through a mobile app notification.
 
         Swal.fire({
             title: `Your order has been placed!`,
