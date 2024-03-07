@@ -2,7 +2,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.nav--burgerMenu-list-container sidebar { /* Handled in this way in order to clear the path for the module swap with 'dynamicBurgerMenuClassname' */
+.nav--burgerMenu-list-container main { /* Handled in this way in order to clear the path for the module swap with 'dynamicBurgerMenuClassname' */
   position: fixed;
   transition: 0.4s;
   max-width: 70%;
