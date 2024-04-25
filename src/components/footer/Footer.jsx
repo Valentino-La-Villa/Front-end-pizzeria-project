@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
@@ -13,7 +12,7 @@ export default function Footer() {
                 <div className="col-6 p-2
                                 d-flex flex-column align-items-end text-end">
                     <p>Business address:</p>
-                    <p>Wainwhright ave. 9999, Phoenix - AZ - USA.</p>
+                    <p>Wainwright ave. 9999, Phoenix - AZ - USA.</p>
                 </div>
             </div>
         </footer>

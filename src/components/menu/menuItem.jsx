@@ -1,7 +1,7 @@
-import shoppingCart from '../assets/icons/shopping-cart-plus.svg'
-import veganLogo from '../assets/icons/vegan.png'
+import shoppingCart from '../../assets/icons/shopping-cart-plus.svg'
+import veganLogo from '../../assets/icons/vegan.png'
 import Swal from 'sweetalert2'
-import { useShoppingCartContext } from './ContextProvider'
+import { useShoppingCartContext } from '../../data/ContextProvider'
 
 export default function MenuItem(props) {
 

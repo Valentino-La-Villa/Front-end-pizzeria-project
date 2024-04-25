@@ -1,7 +1,7 @@
-import instagram from '../assets/social-media/instagram.png'
-import twitter from '../assets/social-media/twitter.png'
-import facebook from '../assets/social-media/facebook.png'
-import youtube from '../assets/social-media/youtube.png'
+import instagram from '../../assets/social-media/instagram.png'
+import twitter from '../../assets/social-media/twitter.png'
+import facebook from '../../assets/social-media/facebook.png'
+import youtube from '../../assets/social-media/youtube.png'
 
 export default function SocialMediaButtons() {
     const socialMediaLinks = [{

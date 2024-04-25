@@ -1,5 +1,5 @@
-import { useShoppingCartContext, useBranchContext } from "./ContextProvider"
-import trashCan from '../assets/icons/trash-can-red.png'
+import { useShoppingCartContext, useBranchContext } from "../../data/ContextProvider"
+import trashCan from '../../assets/icons/trash-can-red.png'
 import Swal from 'sweetalert2'
 import React from "react"
 import CartPaymentInfo from "./CartPaymentInfo"

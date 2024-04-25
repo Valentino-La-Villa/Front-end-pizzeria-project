@@ -1,4 +1,4 @@
-import { useBranchContext, useShoppingCartContext } from "./ContextProvider"
+import { useBranchContext, useShoppingCartContext } from "../../data/ContextProvider"
 import React from "react"
 import Swal from "sweetalert2"
 import { nanoid } from "nanoid"
@@ -81,10 +81,7 @@ export default function CartPaymentInfo({totalPrice}) {
 
     const totalPriceDisplay = getTotalPriceDisplay()
 
-    const shouldSubmitButtonBeClickable = (formData.deliveryAddress && formData.deliveryBranch) ? 
-        <button className="btn btn-outline-light" style={{width: '100%', maxWidth: '180px'}}>Place your order</button> 
-        :
-        <button disabled className="btn btn-outline-light" style={{width: '100%', maxWidth: '180px'}}>Place your order</button>
+    const submitButtonValidation = (formData.deliveryAddress && formData.deliveryBranch)
 
     return (
         <div className="col-12 d-flex justify-content-center " style={{maxWidth: '800px'}}>
@@ -106,10 +103,10 @@ export default function CartPaymentInfo({totalPrice}) {
                         <div className="w-100 align-items-center d-flex justify-content-between 
                                         col-12">
                             <div>
-                                <p>The cost of your order is ${totalPriceDisplay}</p>
+                                <p>The cost of your order is <span className="fw-bold bg-light p-1 text-success border-1 border border-black">${totalPriceDisplay}</span></p>
                             </div>
 
-                            {shouldSubmitButtonBeClickable}
+                            <button disabled={!submitButtonValidation} className="btn btn-outline-light" style={{width: '100%', maxWidth: '180px'}}>Place your order</button> 
                         </div>
                     </form>
         </div>

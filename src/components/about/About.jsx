@@ -1,7 +1,7 @@
 import React from "react";
-import outdoors1 from '../assets/decoration/Outdoors1.png'
-import oven from '../assets/decoration/Oven.png'
-import table1 from '../assets/decoration/Table1.png'
+import outdoors1 from '../../assets/decoration/Outdoors1.png'
+import oven from '../../assets/decoration/Oven.png'
+import table1 from '../../assets/decoration/Table1.png'
 
 export default function About() {
     return (

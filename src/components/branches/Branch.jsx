@@ -1,4 +1,4 @@
-import maps from '../assets/icons/maps.png'
+import maps from '../../assets/icons/maps.png'
 
 export default function Branch(props) {
 

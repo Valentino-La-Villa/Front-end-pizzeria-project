@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import burgerMenuIcon from '../assets/icons/burgerMenuIcon.svg'
-import burgerMenuCloseX from '../assets/icons/burgerMenuCloseX.svg'
+import burgerMenuIcon from '../../assets/icons/burgerMenuIcon.svg'
+import burgerMenuCloseX from '../../assets/icons/burgerMenuCloseX.svg'
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 export default function Navbar() {
 
     const [burgerMenuVisibility, setBurgerMenuVisibility] = React.useState(false)
-    const dynamicBurgerMenuClassname = (burgerMenuVisibility ? 'nav--burgerMenu--visible' : 'nav--burgerMenu--hidden') // Css configs for burger menu are handled in index.css instead of bootstrap
+    const dynamicBurgerMenuClassname = (burgerMenuVisibility ? 'nav--burgerMenu--visible' : 'nav--burgerMenu--hidden')
 
     
     const defineStyle = (({isActive})=> isActive ? 
@@ -44,10 +44,9 @@ export default function Navbar() {
                    col-sm-2
                    d-xl-none 
                    d-flex nav--burgerMenu-list-container justify-content-end ">
-
-            
-
+                    
             <ClickAwayListener onClickAway={()=>{setBurgerMenuVisibility(false)}}>
+
                 <div className="m-0 p-0 d-flex">
                     <button className="btn p-0" onClick={()=>{setBurgerMenuVisibility(true)}}>
                         <img className="img-fluid" style={{width: '50px'}} src={burgerMenuIcon}></img>

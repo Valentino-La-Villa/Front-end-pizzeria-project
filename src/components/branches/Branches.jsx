@@ -1,8 +1,8 @@
 import React from "react";
-import placeholderBranchImage from '../assets/branches/PhoenixBranch.png'
-import youCanFindUsIn from '../assets/icons/You-can-find-us-in.png'
-import maps from '../assets/icons/maps.png'
-import { useBranchContext } from "./ContextProvider";
+import placeholderBranchImage from '../../assets/branches/PhoenixBranch.png'
+import youCanFindUsIn from '../../assets/icons/You-can-find-us-in.png'
+import maps from '../../assets/icons/maps.png'
+import { useBranchContext } from "../../data/ContextProvider";
 import Branch from "./Branch";
 
 export default function Branches() {

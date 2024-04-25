@@ -1,8 +1,8 @@
 import React from "react";
-import { useMenuContext, useShoppingCartContext } from "./ContextProvider";
-import ourSpecialties from '../assets/icons/Our-specialties.png'
-import ourAlternatives from '../assets/icons/Our-alternatives.png'
-import shoppingCart from '../assets/icons/shopping-cart-fill-white.png'
+import { useMenuContext, useShoppingCartContext } from "../../data/ContextProvider";
+import ourSpecialties from '../../assets/icons/Our-specialties.png'
+import ourAlternatives from '../../assets/icons/Our-alternatives.png'
+import shoppingCart from '../../assets/icons/shopping-cart-fill-white.png'
 import MenuItem from "./menuItem";
 import { Toast, ToastContainer } from 'react-bootstrap'
 import { Link } from "react-router-dom";

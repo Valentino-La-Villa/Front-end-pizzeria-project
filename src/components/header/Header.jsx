@@ -1,7 +1,7 @@
 import React from "react";
-import brandLogo from '../assets/brand-logo.png'
+import brandLogo from '../../assets/brand-logo.png'
 import Navbar from "./Nav";
-import squareLogo from '../assets/icons/Stretched-logo.png'
+import squareLogo from '../../assets/icons/Stretched-logo.png'
 
 export default function Header() {
     return (
