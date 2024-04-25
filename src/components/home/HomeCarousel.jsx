@@ -1,11 +1,21 @@
-import { useCarouselContext } from "../../data/ContextProvider"
 import Carousel from 'react-bootstrap/Carousel'
 import { Link } from "react-router-dom"
+import { miscCarouselItems } from "../../data/carouselData"
+import { useSelector } from "react-redux"
 
 export default function HomeCarousel(mainContainerHeight) {
-    const {itemsForCarousel} = useCarouselContext()
+    
+    const products = useSelector(state => state.productHandling.products.data.all)
 
-    const carouselItems = itemsForCarousel.map(item => { // Tried rendering it as a separate component and it didn't work. Probably something to do with react-bootstrap
+    const miscSlides = miscCarouselItems
+    const productsOnDiscount = products.filter(product => product.discount)
+
+    let finalSlideshow = []
+    if (productsOnDiscount.length > 0) {
+        finalSlideshow = [miscSlides[0], ...productsOnDiscount, ...miscSlides.slice(1)]
+    } else finalSlideshow = miscSlides
+
+    const carouselItems = finalSlideshow.map(item => { // Tried rendering it as a separate component and it didn't work. Probably something to do with react-bootstrap
         return (
             <Carousel.Item key={item.id}>
                 <Link to='/products'>

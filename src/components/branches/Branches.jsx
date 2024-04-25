@@ -1,19 +1,15 @@
 import React from "react";
-import placeholderBranchImage from '../../assets/branches/PhoenixBranch.png'
 import youCanFindUsIn from '../../assets/icons/You-can-find-us-in.png'
-import maps from '../../assets/icons/maps.png'
-import { useBranchContext } from "../../data/ContextProvider";
 import Branch from "./Branch";
+import { branchesData } from "../../data/branchData";
 
 export default function Branches() {
 
-    const {branches} = useBranchContext()
-
-    const branchesDisplay = branches.map(branch=>{
+    const branchesDisplay = branchesData.map(branch=>{
         return (
             <Branch
             key={branch.id}
-            index={branches.findIndex(item => item.id == branch.id)}
+            index={branchesData.findIndex(item => item.id == branch.id)}
             {...branch} />
         )
     })

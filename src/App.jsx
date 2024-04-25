@@ -9,15 +9,15 @@ import Branches from './components/branches/Branches'
 import Home from './components/home/Home'
 import Cart from './components/cart/Cart'
 
-import { useShoppingCartContext } from './data/ContextProvider'
 import { Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function App() {
 
   const CartAccessValidation =({children})=>{ // This will only display the 'cart' page when there are items inside the shopping cart
-    const {shoppingList} = useShoppingCartContext()
+    const cart = useSelector(state => state.productHandling.cart)
 
-    if (shoppingList.length == 0) {
+    if (cart.length == 0) {
       return <Navigate to='/products'/>
     }
 

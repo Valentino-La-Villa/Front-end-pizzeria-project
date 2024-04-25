@@ -1,15 +1,20 @@
 import React from "react";
-import { useMenuContext, useShoppingCartContext } from "../../data/ContextProvider";
 import ourSpecialties from '../../assets/icons/Our-specialties.png'
 import ourAlternatives from '../../assets/icons/Our-alternatives.png'
 import shoppingCart from '../../assets/icons/shopping-cart-fill-white.png'
 import MenuItem from "./menuItem";
 import { Toast, ToastContainer } from 'react-bootstrap'
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Products() {
-    const {pizzaList, othersList} = useMenuContext()
-    const {shoppingList} = useShoppingCartContext()
+
+    const state = useSelector(state => state.productHandling)
+    const cart = state.cart
+    const products = state.products.data
+
+    const pizzaList = products.pizza
+    const othersList = products.others
     
     const getItemDisplay=(itemList)=> itemList.map(item => {
         return (
@@ -44,7 +49,7 @@ export default function Products() {
                 {othersListDisplay}
             </div>
 
-            {shoppingList.length >= 1 ?  // This toast ('Go to cart' popup) will only be shown when the cart has items inside it
+            {cart.length >= 1 ?  // This toast ('Go to cart' popup) will only be shown when the cart has items inside it
 
             <ToastContainer
             containerPosition="fixed"

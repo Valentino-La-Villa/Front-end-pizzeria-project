@@ -1,18 +1,18 @@
 import shoppingCart from '../../assets/icons/shopping-cart-plus.svg'
 import veganLogo from '../../assets/icons/vegan.png'
 import Swal from 'sweetalert2'
-import { useShoppingCartContext } from '../../data/ContextProvider'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../redux/slices/productHandlingSlice'
+import { getFinalPriceForSingleUnit } from '../../utilities/miscFunctions'
 
 export default function MenuItem(props) {
 
-    const {
-        shoppingList: shoppingList,
-        setShoppingList: setShoppingList,
-        addToShoppingList: addToShoppingList
-    } = useShoppingCartContext()
+    
+    const dispatch = useDispatch()
+    const add =(providedId)=> dispatch(addToCart({id: providedId}))
     
     const price = props?.priceUSD.toFixed(2)
-    const finalPrice = props.finalPrice()
+    const finalPrice = getFinalPriceForSingleUnit(props.id)
 
     const handleAddItemToList=(event)=>{ // Planing to implement the selection of extra toppings, opt-out of ingredients and choices of sauce on pasta.
         Swal.fire({
@@ -23,10 +23,7 @@ export default function MenuItem(props) {
             cancelButtonColor: "#d33",
         }).then(result => {
             if (result.isConfirmed) {
-                addToShoppingList(event)
-                Swal.fire({
-                    icon: 'success',
-                    title: `Added ${props?.name} to cart!`})
+                add(props.id)
             }
         })
     }

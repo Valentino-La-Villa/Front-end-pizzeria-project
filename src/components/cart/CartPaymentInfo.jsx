@@ -1,15 +1,20 @@
-import { useBranchContext, useShoppingCartContext } from "../../data/ContextProvider"
 import React from "react"
 import Swal from "sweetalert2"
 import { nanoid } from "nanoid"
 import { useNavigate } from 'react-router-dom'
 import Axios from "axios"
 import { Tooltip } from 'react-tooltip'
+import { branchesData } from "../../data/branchData"
+import { useDispatch, useSelector } from "react-redux"
+import { placeHolderForFutureThunkSendOrderToDatabase } from "../../redux/slices/productHandlingSlice"
 
 export default function CartPaymentInfo({totalPrice}) {
 
-    const {branches} = useBranchContext()
-    const {shoppingList, setShoppingList} = useShoppingCartContext()
+    const cart = useSelector(state => state.productHandling.cart)
+    const dispatch = useDispatch()
+    const sendOrder =()=> dispatch(placeHolderForFutureThunkSendOrderToDatabase())
+
+    const branches = branchesData
     const navigate = useNavigate()
 
     const [formData, setFormData] = React.useState({
@@ -33,7 +38,7 @@ export default function CartPaymentInfo({totalPrice}) {
         Delivery address: ${formData.deliveryAddress}
         Location: ${locationDisplay}
         Total price: $${totalPrice}
-        Order:`, shoppingList, ` 
+        Order:`, cart, ` 
         Order ID: ${orderID}`)
 
         Axios.post('https://jsonplaceholder.typicode.com/posts', 
@@ -41,7 +46,7 @@ export default function CartPaymentInfo({totalPrice}) {
             address: formData.deliveryAddress,
             location,
             price: totalPrice,
-            order: shoppingList,
+            order: cart,
             orderID
         }) // Using a placeholder api for this project, but this would go to a custom database, or straight to the restaurant through a mobile app notification.
 
@@ -50,13 +55,12 @@ export default function CartPaymentInfo({totalPrice}) {
             icon: 'success',
             text: `It will be delivered at ${formData.deliveryAddress} - ${locationDisplay}`,
             footer: `The ID of your order is: <b>${orderID}</b>`,
-            timer: 5000,
+            timer: 30000,
             timerProgressBar: true,
             confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
         }).then(() => {
                 navigate('/')
-                setShoppingList([]) // This will only clear the shopping list once the popup expires, so that the items don't immediately dissapear when they click the form submit
+                dispatch(sendOrder()) // This will only clear the shopping list once the popup expires, so that the items don't immediately dissapear when they click the form submit
             }
         )
     }

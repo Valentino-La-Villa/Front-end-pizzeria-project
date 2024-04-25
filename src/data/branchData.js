@@ -1,0 +1,48 @@
+import placeholderBranchImage from '../assets/branches/PhoenixBranch.png'
+
+export const branchesData = [
+    {
+        city: 'Phoenix',
+        state: 'Arizona',
+        state_twoLetterFormat: 'AZ',
+        address: 'Phoenix address 1234',
+        mapsURL: 'https://maps.app.goo.gl/nfY7u16TPpfy4wW9A',
+        reservationURL: 'https://github.com/Valentino-La-Villa',
+        associatedPicture: placeholderBranchImage,
+        id: 'PhoenixAZ',
+        imgSize: 'col-4',
+    },
+    {
+        city: 'Dallas',
+        state: 'Texas',
+        state_twoLetterFormat: 'TX',
+        address: 'Dallas address 1234',
+        mapsURL: 'https://maps.app.goo.gl/WosrF7e1jmmCLtAP6',
+        reservationURL: 'https://github.com/Valentino-La-Villa',
+        associatedPicture: placeholderBranchImage,
+        id: 'DallasTX',
+        imgSize: 'col-4',
+    },
+    {
+        city: 'New York City',
+        state: '',
+        state_twoLetterFormat: 'NY',
+        address: 'New York address 1234',
+        mapsURL: 'https://maps.app.goo.gl/hmwcwgGeBtWeEQ4JA',
+        reservationURL: 'https://github.com/Valentino-La-Villa',
+        associatedPicture: placeholderBranchImage,
+        id: 'NewYorkCity',
+        imgSize: 'col-4',
+    },
+    {
+        city: 'Los Angeles',
+        state: 'California',
+        state_twoLetterFormat: 'CA',
+        address: 'Los Angeles address 1234',
+        mapsURL: 'https://maps.app.goo.gl/ABzZyCbwLjnDLNK36',
+        reservationURL: 'https://github.com/Valentino-La-Villa',
+        associatedPicture: placeholderBranchImage,
+        id: 'LosAngelesCF',
+        imgSize: 'col-4',
+    },
+]
