@@ -82,7 +82,7 @@ export default function CartPaymentInfo({totalPrice}) {
 
     return (
         <div className="col-12 d-flex justify-content-center " style={{maxWidth: '800px'}}>
-            <form onSubmit={handleFormSubmit} className="row container bg-success text-white rounded px-2 py-4 d-flex gap-2">
+            <form onSubmit={handleFormSubmit} className="row container bg-success text-white rounded px-2 py-4 d-flex gap-4">
                         <div className="col-12 d-flex gap-3">
                             <input id="deliveryAddress" value={formData.deliveryAddress} onChange={handleInputChange}
                             type="text" placeholder="Your address" className="col-6 col-sm-5 col-md-4 col-lg-3"/>

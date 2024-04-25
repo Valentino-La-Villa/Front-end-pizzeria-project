@@ -4,19 +4,19 @@ import Axios from 'axios'
 
 export default function Contact() {
 
-    const formName = useRef()
-    const formEmail = useRef()
-    const formTopic = useRef()
-    const formMessage = useRef()
+    const contactFormName = useRef()
+    const contactFormEmail = useRef()
+    const contactFormTopic = useRef()
+    const contactFormMessage = useRef()
 
-    const handleSubmit = useCallback((event)=> {
+    const handleContactFormSubmit = useCallback((event)=> {
         event.preventDefault()
 
         const data = {
-            formName: formName?.current?.value,
-            formEmail: formEmail?.current?.value,
-            formTopic: formTopic?.current?.value,
-            formMessage: formMessage?.current?.value
+            contactFormName: formName?.current?.value,
+            contactFormEmail: formEmail?.current?.value,
+            contactFormTopic: formTopic?.current?.value,
+            contactFormMessage: formMessage?.current?.value
         }
 
         const validateData=(data)=> {
@@ -61,34 +61,35 @@ export default function Contact() {
     })
 
     return (
-        <main className="container my-5 text-center">
+        <main className="container-fluid my-5 text-center w-100">
+            
             <h3>You can find our administrative offices at Wainwright ave. 9999, Phoenix, Arizona</h3>
 
             <i className="text-secondary">Or you can leave us your message right here</i>
 
-            <form onSubmit={handleSubmit} className="container-fluid my-5 justify-content-center d-flex"
+            <form onSubmit={handleContactFormSubmit} className="container-fluid my-5 justify-content-center d-flex"
             > 
                 
-                <div className="col-12 col-xl-5 row">
+                <div className="col-12 col-md-8 col-lg-7 col-xl-6 row d-flex gap-1 px-3 px-sm-5 py-5 rounded-2 border border-secondary bg-light">
                     
-                    <label htmlFor="contactForm__name">Your name</label>
-                    <input ref={formName}
-                     className="mb-4" id="contactForm__name" type="text" />
+                    <label htmlFor="contactForm__name" className="contactSection__text">Your name</label>
+                    <input ref={contactFormName}
+                    style={{backgroundColor: '#d9e3f2'}} className="border border-1 border-secondary mb-4 form-control text-black" type="text" />
 
-                    <label htmlFor="contactForm__email">Your email</label>
-                    <input ref={formEmail}
-                     className="mb-4" id="contactForm__email" type="text" />
+                    <label htmlFor="contactForm__email" className="contactSection__text">Your email</label>
+                    <input ref={contactFormEmail}
+                    style={{backgroundColor: '#d9e3f2'}} className="border border-1 border-secondary mb-4 form-control text-black" type="text" />
 
-                    <label htmlFor="contactForm__topic">Topic</label>
-                    <input ref={formTopic}
-                     className="mb-4" id="contactForm__topic" type="text" />
+                    <label htmlFor="contactForm__topic" className="contactSection__text">Topic</label>
+                    <input ref={contactFormTopic} 
+                    style={{backgroundColor: '#d9e3f2'}} className="border border-1 border-secondary mb-4 form-control text-black" id="contactForm__topic" type="text" />
 
-                    <label htmlFor="contactForm__message">Your message</label>
-                    <textarea ref={formMessage}
-                     className="mb-4" id="contactForm__message" />
+                    <label htmlFor="contactForm__message" className="contactSection__text">Your message</label>
+                    <textarea ref={contactFormMessage} 
+                    style={{backgroundColor: '#d9e3f2'}} className="border border-1 border-secondary mb-4 form-control text-black" id="contactForm__message" />
                     
                     <div className="col-12 d-flex justify-content-end p-0">
-                        <button className="btn btn-dark col-3">Submit</button>
+                        <button className="btn btn-outline-dark col-5 col-sm-3">Submit</button>
                     </div>
                 </div>
 
