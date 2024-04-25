@@ -4,6 +4,7 @@ import Swal from "sweetalert2"
 import { nanoid } from "nanoid"
 import { useNavigate } from 'react-router-dom'
 import Axios from "axios"
+import { Tooltip } from 'react-tooltip'
 
 export default function CartPaymentInfo({totalPrice}) {
 
@@ -60,16 +61,12 @@ export default function CartPaymentInfo({totalPrice}) {
         )
     }
 
-    const handleInputChange =(event)=> {
-        setFormData(prev => {
-            return (
-                {
-                    ...prev,
-                    [event.target.id]: event.target.value
-                }
-            )
-        })
-    }
+    const handleInputChange =(event)=> {setFormData(prev => (
+        {
+            ...prev,
+            [event.target.id]: event.target.value
+        }
+    ))}
 
     const getTotalPriceDisplay =()=>{
         try {
@@ -106,7 +103,25 @@ export default function CartPaymentInfo({totalPrice}) {
                                 <p>The cost of your order is <span className="fw-bold bg-light p-1 text-success border-1 border border-black">${totalPriceDisplay}</span></p>
                             </div>
 
-                            <button disabled={!submitButtonValidation} className="btn btn-outline-light" style={{width: '100%', maxWidth: '180px'}}>Place your order</button> 
+                            <div className="d-flex align-items-center">
+                                <div
+                                data-tooltip-id="place-order-disabled"
+                                data-tooltip-place="top">
+                                    <button disabled={!submitButtonValidation} className="btn btn-outline-light" style={{width: '100%', maxWidth: '180px'}}>Place your order</button> 
+                                </div>
+                            </div>
+
+                            {submitButtonValidation ? 
+                                <></> 
+                                : 
+                                <Tooltip id="place-order-disabled">
+                                    <div className="d-flex flex-column">
+                                        <b>Before submitting your order you must first:</b>
+                                        <span>Select the branch that will be delivering your pizza: {formData.deliveryBranch ? <>✅</> : <>❌</>}</span>
+                                        <span>Write down your address: {formData.deliveryAddress ? <>✅</> : <>❌</>}</span>
+                                    </div>
+                                </Tooltip>
+                            }
                         </div>
                     </form>
         </div>
