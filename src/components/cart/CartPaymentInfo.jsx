@@ -1,21 +1,14 @@
 import React from "react"
-import Swal from "sweetalert2"
-import { nanoid } from "nanoid"
-import { useNavigate } from 'react-router-dom'
-import Axios from "axios"
 import { Tooltip } from 'react-tooltip'
-import { branchesData } from "../../data/branchData"
 import { useDispatch, useSelector } from "react-redux"
-import { placeHolderForFutureThunkSendOrderToDatabase } from "../../redux/slices/productHandlingSlice"
+import { deliverOrderToDatabase } from "../../redux/slices/productHandlingSlice"
 
 export default function CartPaymentInfo({totalPrice}) {
 
     const cart = useSelector(state => state.productHandling.cart)
-    const dispatch = useDispatch()
-    const sendOrder =()=> dispatch(placeHolderForFutureThunkSendOrderToDatabase())
+    const branches = useSelector(state => state.branches.branches.data)
 
-    const branches = branchesData
-    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [formData, setFormData] = React.useState({
         deliveryAddress: '',
@@ -23,46 +16,22 @@ export default function CartPaymentInfo({totalPrice}) {
     })
 
     const branchesDropdown = branches.map(branch => {return (
-        <option value={branch.id} key={branch.id}>
+        <option value={branch.name} key={branch.id}>
             {branch.city}, {branch.state_twoLetterFormat}
         </option>
     )})
     
     const handleFormSubmit =(event)=>{                              // In a full project this information would go straight to back-end to be processed and directed to the restaurant
         event.preventDefault()
-        const location = branches.find(branch => branch.id == formData.deliveryBranch) //
-        const locationDisplay = `${location.city}, ${location.state_twoLetterFormat}`  //
-        const orderID = nanoid()
+        const location = branches.find(branch => branch.name == formData.deliveryBranch)
+        const cartJson = cart.map(productOnCart => `${productOnCart.name}: ${productOnCart.amount} ordered`)
 
-        console.log(`Processed incoming order with the following details:
-        Delivery address: ${formData.deliveryAddress}
-        Location: ${locationDisplay}
-        Total price: $${totalPrice}
-        Order:`, cart, ` 
-        Order ID: ${orderID}`)
-
-        Axios.post('https://jsonplaceholder.typicode.com/posts', 
-        {
+        dispatch(deliverOrderToDatabase({
             address: formData.deliveryAddress,
-            location,
+            location: location.name,
             price: totalPrice,
-            order: cart,
-            orderID
-        }) // Using a placeholder api for this project, but this would go to a custom database, or straight to the restaurant through a mobile app notification.
-
-        Swal.fire({
-            title: `Your order has been placed!`,
-            icon: 'success',
-            text: `It will be delivered at ${formData.deliveryAddress} - ${locationDisplay}`,
-            footer: `The ID of your order is: <b>${orderID}</b>`,
-            timer: 30000,
-            timerProgressBar: true,
-            confirmButtonColor: "#3085d6",
-        }).then(() => {
-                navigate('/')
-                dispatch(sendOrder()) // This will only clear the shopping list once the popup expires, so that the items don't immediately dissapear when they click the form submit
-            }
-        )
+            cartJson: cartJson,
+        }))
     }
 
     const handleInputChange =(event)=> {setFormData(prev => (

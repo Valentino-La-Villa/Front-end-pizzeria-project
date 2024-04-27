@@ -2,7 +2,7 @@ import HomeCarousel from "./HomeCarousel"
 import SocialMediaButtons from "./SocialMediaButtons"
 import { Link } from "react-router-dom"
 
-export default function Home() { // Social media & discounts, uberEats
+export default function Home() {
 
     return (
         <main className="container px-3 mt-5">

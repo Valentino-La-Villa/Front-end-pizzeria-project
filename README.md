@@ -1,4 +1,4 @@
-# Generic pizzeria website
+# John's Pizzeria
 
 Features:
 

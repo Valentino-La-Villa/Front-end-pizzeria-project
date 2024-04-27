@@ -43,12 +43,12 @@ export default function MenuItem(props) {
                         >
                             <p className="card-text mb-2 mt-2 d-flex">
                                 <span style={{textDecoration: 'line-through'}}>${price}</span>
-                                <span className="ms-1"> → ${finalPrice}</span>
+                                <span className="ms-1"> → <span className='text-success fw-bold'>${finalPrice}</span></span>
                                 <span className="ms-2 bg-danger p-1 rounded-1 text-white" style={{fontSize: '12px'}}>{props?.discount}% OFF!</span>
                             </p>
                         </div> :
                         
-                        <p className="card-text mb-2">${price}</p> // Normal display if no discount is applied
+                        <p className="card-text mb-2 text-success fw-bold">${price}</p> // Normal display if no discount is applied
                         }
     
                         <p className="card-text">{props?.description}</p>

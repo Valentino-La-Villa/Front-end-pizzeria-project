@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
@@ -10,9 +10,28 @@ import Home from './components/home/Home'
 import Cart from './components/cart/Cart'
 
 import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBranchesFromDatabase } from './redux/slices/branches'
+import { getProductListFromDatabase } from './redux/slices/productHandlingSlice'
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  const productsFetchStatus = useSelector(state => state.productHandling.products.status)
+  const branchesFetchStatus = useSelector(state => state.branches.branches.status)
+
+  useEffect(()=>{
+    if(branchesFetchStatus == 'idle') {
+      dispatch(getBranchesFromDatabase())
+    }
+  }, [dispatch, branchesFetchStatus])
+
+  useEffect(()=>{
+    if (productsFetchStatus == 'idle') {
+      dispatch(getProductListFromDatabase())
+    }
+  }, [dispatch, productsFetchStatus])
 
   const CartAccessValidation =({children})=>{ // This will only display the 'cart' page when there are items inside the shopping cart
     const cart = useSelector(state => state.productHandling.cart)
