@@ -22,16 +22,12 @@ export default function Branches() {
     }
 
     return (
-    <main>
-            
-        <div className="container text-start gx-5 p-1 my-5">
-
-            <div className="row d-flex justify-content-center mb-5">
-                <img className="col-9 col-sm-6 col-md-5 col-lg-4" src={youCanFindUsIn} alt="" />
-            </div>
-            
-            {branchesDisplay}
+    <section className="container text-start gx-5 p-1 my-5">
+        <div className="row d-flex justify-content-center mb-5">
+            <img className="col-9 col-sm-6 col-md-5 col-lg-4" src={youCanFindUsIn} alt="" />
         </div>
-    </main>
+        
+        {branchesDisplay}
+    </section>
     )
 }

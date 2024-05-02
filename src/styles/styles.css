@@ -87,6 +87,23 @@
   font-family: "Poppins", sans-serif;
 }
 
+.branches__googleMapsIcon {
+  height: "2vh";
+  margin-bottom: "3px";
+}
+
+.branches__branch:nth-child(odd) div {
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: end;
+}
+.branches__branch:nth-child(odd) .branches__branch__address {
+  align-items: "center";
+  gap: "10px";
+  flex-direction: row-reverse;
+  display: flex;
+}
+
 .socialMediaButton--custom img {
   transition: 0.5s;
 }
